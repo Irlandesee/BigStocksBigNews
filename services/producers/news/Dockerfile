@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM python:3-slim
 LABEL authors="Mattia Lunardi"
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir --upgrade pip && \
@@ -6,5 +6,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && \
 
 RUN mkdir -p /opt/bigstocksbignews/
 WORKDIR /opt/bigstocksbignews/
+
+COPY src/ .
 
 CMD ["python3", "./main.py"]
